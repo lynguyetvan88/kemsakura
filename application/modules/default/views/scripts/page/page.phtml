@@ -1,0 +1,104 @@
+<?php 
+
+foreach ($this->books as $val)
+{
+    $cat_page=$this->escape($val['cat_page']);
+    $title=$this->escape($val['title']);
+    $url_1=  khongdau($title);
+     Zend_Registry::set('titlepage', $url_1);
+?>
+<div class="title1">
+<div style="padding-top:11px; padding-left:65px"><span style="padding-top:10px;"><?php echo $title; ?></span></div>
+</div>
+
+<div class="sanpham" align="left">
+ <?php
+
+    if($cat_page==2)
+    {
+            foreach ($this->bookss as $vall)
+            {
+                
+                echo $vall["content"];
+               
+             
+            }
+          
+    ?>
+   
+    
+    
+    <?php } else {
+        foreach ($this->booksss as $valll)
+            {
+                $id=$valll["id"];
+                $description=$valll["description"];
+                 if(strlen($description)>360)
+                {
+
+                       $new_gioihan=strpos($description," ",360);
+                        $new_chuoi = substr($description,0,$new_gioihan)."...";
+
+                }
+                else
+                {
+
+                       $new_chuoi= $description;
+                }
+               
+                $title=$valll["title"];
+                $url=  khongdau($title);
+               
+                $view=new Zend_View();
+                $base=$view->baseUrl();
+                $images="$base/Upload/".$valll["images"];
+                $images="<img src='$images' title='$title' alt='$title' >";
+                $menu=$valll["menu"];
+                $link="$base/trang/$url-$id-$menu.html";
+                echo"<div class='tintuc1'>
+    <div class='hinhgt'><a href='$link' title='$title'>$images</a></div>
+	 
+	
+	<div style='color:#F99C1C;'>
+        <b><a href='$link' style='color:#000' title='$title'> $title</a></b> 
+        <br>  <font color='black'> $new_chuoi </font>
+	 
+	
+	</div>
+        <div style='clear:both'></div>
+        <div class='details' align='right'>
+	<a href='$link' style='color:#FF0000;font-size:12px' title='$title'>  Chi tiết.. </a></div>
+	</div>";
+      
+	echo "<div style='clear:both'></div>";
+               
+             
+            }
+        ?>
+    
+    
+ <?php 
+ 
+ 
+ } }?>
+    
+   <?php  
+//print_r($this->booksss);
+   $id_page=$this->id;
+      Zend_Registry::set('idpage', $id_page);
+
+echo $this->paginationControl($this->booksss,  'Sliding', 'page/pagination.phtml');
+
+
+
+
+   
+   ?> 
+    
+    
+  
+    
+</div>
+
+
+<div style="clear:both; height:10px"></div>

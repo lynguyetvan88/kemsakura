@@ -1,0 +1,67 @@
+
+<div class="clear" style="height: 8px"></div>
+<link rel="stylesheet" type="text/css" href="<?= $this->baseUrl() ?>/template/css/side.css" />
+ <script type="text/javascript" src="<?= $this->baseurl() ?>/template/js/jssor.core.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl() ?>/template/js/jssor.utils.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl() ?>/template/js/jssor.slider.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl() ?>/template/js/side.js"></script>
+    <!-- Jssor Slider Begin -->
+    <!-- You can move inline styles (except 'top', 'left', 'width' and 'height') to css file or css block. -->
+    <div id="slider1_container" style="position: relative; width: 1000px;
+        height: 300px;">
+
+        <!-- Loading Screen -->
+        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+            <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+        </div>
+        
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1000px; height: 300px;
+            overflow: hidden;">
+            <?php 
+            $muser= new Default_Model_Page();
+             $side=$muser->list_side_home();
+            foreach ($side as $val) {
+                
+            ?>
+            <div>
+                <a u=image href="<?= $val['link']?>"><img src="<?= $this->baseurl() ?>/Upload/<?= $val['images']?>" alt="Kem White Doctors" /></a>
+                <?php if(!empty($val['title'])) {?>
+				<div u=caption t="*" class="captionOrange"  style="position:absolute; left:20px; top: 30px; width:300px; height:60px; "> 
+                <?= $val['title']?>
+                </div>
+				<?php } ?>
+            </div>
+            
+            <?php }?>
+           
+        </div>
+        
+        <!-- Navigator Skin Begin -->
+        <!-- jssor slider navigator skin 01 -->
+        
+        <!-- navigator container -->
+        <div u="navigator" class="jssorn01" style="position: absolute; bottom: 16px; right: 10px;">
+            <!-- navigator item prototype -->
+            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
+        </div>
+        <!-- Navigator Skin End -->
+        
+        <!-- Direction Navigator Skin Begin -->
+        
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssord05l" style="width: 40px; height: 40px; top: 123px; left: 8px;">
+        </span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssord05r" style="width: 40px; height: 40px; top: 123px; right: 8px">
+        </span>
+        <!-- Direction Navigator Skin End -->
+        
+    </div>
+    <!-- Jssor Slider End -->
+    

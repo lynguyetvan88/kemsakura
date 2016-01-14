@@ -1,0 +1,128 @@
+/*default CSS for SAG scroller*/
+
+.sagscroller{
+width: 210px;  /*default width of scroller*/
+height:450px;
+overflow:hidden;
+position:relative;
+
+
+}
+
+.sagscroller a{
+font-weight:bold;
+color:#000;
+}
+
+.sagscroller ul{
+position:absolute;
+margin:0;
+padding:0;
+
+list-style:none;
+width: 100%;
+}
+
+.sagscroller ul li{
+display:block;
+}
+
+.sagscroller ul li .rsscontent{ /*div containing body of each RSS entry*/
+font-size:90%;
+}
+
+.sagscroller ul li .rsslabel{ /*div containing label of each RSS entry*/
+margin-top:5px;
+background: #eee;
+font-size:12px;
+clear: both;
+}
+
+
+
+
+.sagscroller_1{
+width: 200px;  /*default width of scroller*/
+height:550px;
+overflow:hidden;
+position:relative;
+border:7px solid black;
+border-radius: 8px; /*css3 round corners*/
+-moz-border-radius: 8px; /*css3 round corners*/
+-webkit-border-radius: 8px; /*css3 round corners*/
+
+}
+
+.sagscroller_1 a{
+font-weight:bold;
+color:#000;
+}
+
+.sagscroller_1 ul{
+position:absolute;
+margin:0;
+padding:0;
+background:white;
+list-style:none;
+width: 100%;
+}
+
+.sagscroller_1 ul li{
+display:block;
+}
+
+.sagscroller_1 ul li .rsscontent{ /*div containing body of each RSS entry*/
+font-size:90%;
+}
+
+.sagscroller_1 ul li .rsslabel{ /*div containing label of each RSS entry*/
+margin-top:5px;
+background: #eee;
+font-size:12px;
+clear: both;
+}
+
+
+
+
+
+div#mysagscroller{
+width: 214px; /*width of scroller*/
+height:540px;
+text-align:center;
+}
+
+div#mysagscroller ul li{
+/*background:navy;*/
+color:white;
+padding:5px;
+margin-bottom:5px; /*bottom spacing between each LI*/
+border-bottom:1px dotted #CCC;
+}
+div#mysagscroller ul li a {color:#FFF}
+div#mysagscroller ul li:first-letter{
+font-size:28px;
+background:white;
+color:black;
+padding:0 2px;
+margin-right:2px;
+}
+div#mysagscroller ul li img{
+	width:175px;  border:0px solid #ccc; 
+}
+div#mysagscroller_1 ul li img{
+	width:175px; height:140px; border:1px solid #536367; padding:6px; background:none repeat scroll 0 0 #2A393C;
+}
+/* #SAG scroller demo #2 */
+
+div#mysagscroller2{
+width: 250px; /*width of scroller*/
+height:300px;
+border:7px solid #C0C0C0;
+}
+
+div#mysagscroller2 ul li img{
+border-width:0;
+display:block; /*this causes each image to be flush against each other*/
+}
+.sliderdesc {display:none !important;}

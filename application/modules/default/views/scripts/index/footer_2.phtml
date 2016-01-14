@@ -1,0 +1,65 @@
+
+
+
+<div class="footer">
+   
+
+<div class="clear_10"></div>
+
+<div class="menu_foo">
+     <li><a href="<?=$this->baseUrl()?>" title="trang chủ" >Trang chủ</a></li>
+    <?php 
+     $foo = new Default_Model_System;
+            $list = $foo->list_menu_page();
+    foreach ($list as $value) {
+                $id=$value['id'];
+					$ten=$value['title'];
+					 $url=  khongdau($ten);
+					$link_menu="$base/pages/$url-$id.html";
+                                        
+            ?>
+    <li><a href="<?=$link_menu?>" title="<?=$ten?>" ><?=$ten?></a></li>
+   <? }?>
+    <li><a href="http://forumketoan.com/forum" target="_blank" class="none" title="diễn đàn" >Diễn đàn</a></li>
+    <div id="back-top"></div>
+</div>
+
+<div style="width: 700px; float: left;text-align: left"> <?php  $foo->footer(); ?></div>
+<div style="width: 200px; float: right; text-align: right"> <a href="<?= $this->baseUrl() ?>/sitemap" style="color: #000;font-weight: bold">Sitemap</a> | <a href="<?= $this->baseUrl() ?>/lien-he.html" style="color: #000;font-weight: bold">Liên hệ</a></p></div>
+
+<div class="clear_10"></div>
+</div>
+
+<script src="<?= $this->baseUrl() ?>/template/js/jquery-1.7.2.min.js"></script>
+<script>
+$(document).ready(function(){
+   
+	// hide #back-top first
+	//$("#back-top").hide();
+	
+	// fade in #back-top
+        $( ".link" ).click(function() {
+        var link_name = $(this).attr('href');
+        window.location.assign(link_name)
+       // alert( link_name );
+        });
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+
+		// scroll body to 0px on click
+		$('#back-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 2000);
+			return false;
+		});
+	});
+
+});
+</script>

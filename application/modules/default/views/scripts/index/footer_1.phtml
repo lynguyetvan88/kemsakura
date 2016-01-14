@@ -1,0 +1,52 @@
+
+<div class="container footer">
+    
+
+   
+        <?php
+        $page = new Default_Model_System();
+        $hotline = $page->list_system();
+        foreach ($hotline as $value) {
+            echo $value['footer'];
+        }
+        ?>
+  
+  
+
+
+
+
+</div>
+<div id="back-top"></div>
+<script>
+    $(document).ready(function () {
+
+        // hide #back-top first
+        //$("#back-top").hide();
+
+        // fade in #back-top
+        $(".link").click(function () {
+            var link_name = $(this).attr('href');
+            window.location.assign(link_name)
+            // alert( link_name );
+        });
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('#back-top').fadeIn();
+                } else {
+                    $('#back-top').fadeOut();
+                }
+            });
+
+            // scroll body to 0px on click
+            $('#back-top').click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 2000);
+                return false;
+            });
+        });
+
+    });
+</script>

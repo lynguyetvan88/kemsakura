@@ -1,0 +1,112 @@
+
+
+<link href="<?= $this->baseUrl() ?>/template/menu/styles.css" rel="stylesheet" type="text/css"/>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<div id='cssmenu'>
+    <ul>
+        <li><a href='#'><span>Home</span></a></li>
+        <li class='has-sub'><a href='#'><span>Products</span></a>
+            <ul>
+                <li class='has-sub'><a href='#'><span>Product 1</span></a>
+                    <ul>
+                        <li><a href='#'><span>Sub Product</span></a></li>
+                        <li class='last'><a href='#'><span>Sub Product</span></a></li>
+                    </ul>
+                </li>
+                <li class='has-sub'><a href='#'><span>Product 2</span></a>
+                    <ul>
+                        <li><a href='#'><span>Sub Product</span></a></li>
+                        <li class='last'><a href='#'><span>Sub Product</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href='#'><span>About</span></a></li>
+        <li class='last'><a href='#'><span>Contact</span></a></li>
+    </ul>
+</div>
+
+<?php 
+
+ function menu_doc() 
+    {
+        $vie= new Zend_View();
+        $base= $vie->baseurl();
+       
+       echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$base/template/images/menu_doc.css\" />";
+         echo" <div class=\"title1\">
+        <div style=\"padding-top:10px;\" align=\"center\">Danh mục sản phẩm</div>
+        </div>";
+          echo"<div class=\"hotro\">";
+      
+        
+        $cnDB2= Zend_Registry::get('connectDB'); 
+       
+            $tv1="select * from  add_page where cat_page=1 and active=1 and id  in (63,64,65,66) order by id  "; 
+             $stml2= $cnDB2->prepare($tv1); 
+            $stml2->execute();
+          
+            
+             
+	$stt=1;
+	 while ($tv_21=$stml2->fetch(PDO::FETCH_ASSOC)) { 
+            
+	 $dm=$tv_21['id'];
+
+			$danhmuc=$tv_21['title'];
+                      
+					 $url__=  khongdau($danhmuc);
+			
+			  echo "<div class=\"title\"><div style=\"padding-top:10px;\">
+
+<a href=\"$base/pages/$url__-$dm.html\" title=\"$danhmuc\">$danhmuc</a></div></div>
+<div class=\"menu_doc\" id=\"menu_doc$stt\">
+	
+
+";
+		
+        echo "<ul>";
+			
+				
+                                $tv11="select * from page where menu like '$dm' and  active=1 order by position asc";
+                                $stml21= $cnDB2->prepare($tv11);
+                                $stml21->execute();
+                                                                
+				while ($tv_2=$stml21->fetch(PDO::FETCH_ASSOC)) 
+				{
+                                    //var_dump($tv_2);exit;
+					$id=$tv_2['id'];
+                                        $menu=$tv_2['menu'];
+					$ten=$tv_2['title'];
+					 $url=  khongdau($ten);
+					$link_menu="$base/trang/$url-$id-$menu.html";
+					echo "<li>";
+						echo "<a href=\"$link_menu\" title=\"$ten\">"; 
+							echo  $tv_2['title'];
+						echo "</a>";
+						$xacdinh_menu_con_doc=  $this->xacdinh_menu_con_doc($id);
+						if($xacdinh_menu_con_doc=="co")
+						{
+							echo "<ul>";
+                                                        $this->dequy_menu_doc($id);
+							echo "</ul>";
+						}
+						else
+						{
+						}
+					echo "</li>";
+				}
+			
+            	echo "</ul>
+                        </div>";
+                                
+                    echo "<script type=\"text/javascript\">
+	menu_doc$stt()
+</script>";
+        
+                $stt++;} 
+
+    echo "</div>";    
+    }
+?>

@@ -1,0 +1,115 @@
+	
+        <link rel="stylesheet" type="text/css" href="<?= $this->baseUrl() ?>/template/css/style.css" />
+        	
+<?php 
+$page = new Default_Model_Page;
+
+?>
+
+<div class="title1">
+    <div  style="padding-top:10px; padding-left: 20px">Kết quả tìm kiếm</div>
+    
+
+</div>
+
+<div class="sanpham" align="left">
+
+     
+    <?php
+   
+   
+        foreach ($this->booksss as $valll)
+            {
+            
+             
+                $id=$valll["id"];
+                $description=$valll["description"];
+                 if(strlen($description)>360)
+                {
+
+                       $new_gioihan=strpos($description," ",360);
+                       $new_chuoi = substr($description,0,$new_gioihan)."...";
+
+                }
+                else
+                {
+
+                       $new_chuoi= $description;
+                }
+               
+                $title=$valll["title"];
+                $url=  khongdau($title);
+               
+                $view=new Zend_View();
+                $base=$view->baseUrl();
+                $img="$base/Upload/".$valll["images"];
+                $images="<img src='$img' title='$title' alt='$title' >";
+                $menu=$valll["menu"];
+                $link="$base/trang/$url-$id-$menu.html";
+                
+                echo"<div class='tintuc1'>
+    <div class='hinhgt'><a href='$link' title='$title'>$images</a></div>
+	 
+	
+	<div class='new_tt'>
+        <b><a href='$link' style='color:#000' title='$title'> $title</a></b> 
+        <br>  <font color='black'>  $new_chuoi </font>
+	 
+	
+	</div>
+        <div style='clear:both'></div>
+        <div class='details' align='right'>
+	<a href='$link' title='$title'>  Chi tiết >>> </a></div>
+	</div>";
+      
+	echo "<div class='clear'></div>";
+             
+            
+        ?>
+    
+    
+    
+    
+				<!-- If browser does not support border radius, show this message -->
+				
+				
+                                
+                                
+                             
+  
+    
+    
+ <?php 
+ 
+    
+    }
+    ?>
+       
+                                
+
+ <?php
+
+ 
+
+ 
+ 
+   
+//print_r($this->booksss);
+   $id_page=$this->id;
+      Zend_Registry::set('idpage', $id_page);
+
+echo $this->paginationControl($this->booksss,  'Sliding', 'page/pagination.phtml');
+
+
+
+
+   
+   ?> 
+    
+    
+  
+    
+</div>
+
+
+<div style="clear:both; height:10px"></div>

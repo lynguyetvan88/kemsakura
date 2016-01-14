@@ -1,0 +1,325 @@
+
+
+
+    <!-- Owl Carousel Assets -->
+    <link href="<?= $this->baseUrl(); ?>/template/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="<?= $this->baseUrl(); ?>/template/owl-carousel/owl.theme.css" rel="stylesheet">
+<style>
+    
+    #owl-demo .item{
+
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+text-align: center;
+}
+.customNavigation{
+text-align: right;
+
+
+}
+
+.customNavigation a{
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+   
+
+header{position:relative;z-index:1;}
+
+.button{display:inline-block;height:30px;line-height:30px;position:relative;border-radius:5px;padding:0 12px;color:#fff;font-weight:bold;border:0;text-shadow:-1px -1px 2px rgba(0,0,0,.29);cursor:pointer;text-decoration:none;}
+.button:hover{color:#fff;}
+.button:active{bottom:-1px;}
+.prev{padding:0 12px 0 7px;margin-left:10px;}
+.next{padding:0 7px 0 12px;margin-right:10px;}
+.prev.next{padding:0 12px;}
+.prev:before{position:absolute;content:'';height:22px;width:22px;border-radius:5px;left:-8px;top:4px;z-index:-1;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+.next:after{position:absolute;content:'';height:22px;width:22px;border-radius:5px;right:-8px;top:4px;z-index:-1;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+.button{
+    background: #bfbfbf;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JmYmZiZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzcwNzA3MCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUyJSIgc3RvcC1jb2xvcj0iIzY2NjY2NiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4OThjOGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #bfbfbf 0%, #707070 50%, #666666 52%, #898c8b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bfbfbf), color-stop(50%,#707070), color-stop(52%,#666666), color-stop(100%,#898c8b));
+    background: -webkit-linear-gradient(top,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    background: -o-linear-gradient(top,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    background: -ms-linear-gradient(top,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    background: linear-gradient(to bottom,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfbfbf', endColorstr='#898c8b',GradientType=0 );
+}
+
+.button:before, .button:after{
+    background: #bfbfbf;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYmZiZmJmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNzA3MDcwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTIlIiBzdG9wLWNvbG9yPSIjNjY2NjY2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzg5OGM4YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(-45deg,  #bfbfbf 0%, #707070 50%, #666666 52%, #898c8b 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#bfbfbf), color-stop(50%,#707070), color-stop(52%,#666666), color-stop(100%,#898c8b));
+    background: -webkit-linear-gradient(-45deg,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    background: -o-linear-gradient(-45deg,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    background: -ms-linear-gradient(-45deg,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    background: linear-gradient(135deg,  #bfbfbf 0%,#707070 50%,#666666 52%,#898c8b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfbfbf', endColorstr='#898c8b',GradientType=1 );
+
+}
+.blue{
+    background: #35b8d3;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM1YjhkMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzJjODZhMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUyJSIgc3RvcC1jb2xvcj0iIzJlN2U5NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzODk4YjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #35b8d3 0%, #2c86a0 50%, #2e7e95 52%, #3898b5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#35b8d3), color-stop(50%,#2c86a0), color-stop(52%,#2e7e95), color-stop(100%,#3898b5));
+    background: -webkit-linear-gradient(top,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    background: -o-linear-gradient(top,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    background: -ms-linear-gradient(top,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    background: linear-gradient(to bottom,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35b8d3', endColorstr='#3898b5',GradientType=0 );
+}
+.blue:before, .blue:after{
+    background: #35b8d3;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzViOGQzIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMmM4NmEwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTIlIiBzdG9wLWNvbG9yPSIjMmU3ZTk1IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzM4OThiNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(-45deg,  #35b8d3 0%, #2c86a0 50%, #2e7e95 52%, #3898b5 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#35b8d3), color-stop(50%,#2c86a0), color-stop(52%,#2e7e95), color-stop(100%,#3898b5));
+    background: -webkit-linear-gradient(-45deg,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    background: -o-linear-gradient(-45deg,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    background: -ms-linear-gradient(-45deg,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    background: linear-gradient(135deg,  #35b8d3 0%,#2c86a0 50%,#2e7e95 52%,#3898b5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35b8d3', endColorstr='#3898b5',GradientType=1 );
+}
+.green{
+    background: #91b71b;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzkxYjcxYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzc4YWYwZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUyJSIgc3RvcC1jb2xvcj0iIzZjYTAxOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3OGFmMGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #91b71b 0%, #78af0e 50%, #6ca018 52%, #78af0e 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#91b71b), color-stop(50%,#78af0e), color-stop(52%,#6ca018), color-stop(100%,#78af0e));
+    background: -webkit-linear-gradient(top,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    background: -o-linear-gradient(top,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    background: -ms-linear-gradient(top,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    background: linear-gradient(to bottom,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91b71b', endColorstr='#78af0e',GradientType=0 );
+}
+.green:before, .green:after{
+    background: #91b71b;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOTFiNzFiIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNzhhZjBlIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTIlIiBzdG9wLWNvbG9yPSIjNmNhMDE4IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc4YWYwZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(-45deg,  #91b71b 0%, #78af0e 50%, #6ca018 52%, #78af0e 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#91b71b), color-stop(50%,#78af0e), color-stop(52%,#6ca018), color-stop(100%,#78af0e));
+    background: -webkit-linear-gradient(-45deg,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    background: -o-linear-gradient(-45deg,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    background: -ms-linear-gradient(-45deg,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    background: linear-gradient(135deg,  #91b71b 0%,#78af0e 50%,#6ca018 52%,#78af0e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91b71b', endColorstr='#78af0e',GradientType=1 );
+}
+</style>
+  
+
+
+    <script src="<?= $this->baseUrl(); ?>/template/owl-carousel/owl.carousel.js"></script>
+
+
+  
+    <?php 
+$page = new Default_Model_Page;
+$stt=1;
+foreach ($this->list as $value) {
+    $id__=$value['id'];
+    $title=$value['title'];
+    $url_=  khongdau($title);
+ ?>
+<div class="title1">
+    <a href="<?= $this->baseUrl()."/pages/".$url_."-$id__.html" ?>"><?= $value['title'] ?></a>
+   
+</div>
+
+
+
+<div class="sanpham">
+    <div class="clear_10"></div>
+    <div id="owl-demo_<?=$stt?>" class="owl-carousel owl-theme">
+        <?php 
+    $base=$this->baseurl();
+    
+    foreach ($page->list_page___($id__, 100) as $val) {
+        
+         $id=$val['id'];
+         $menu = $val['menu'];
+        $title=$val['title'];
+        $images=$val['images'];
+         $mask = APPLICATION_PATH."/../Upload/$images"; 
+        if (file_exists($mask)){
+            $images=$val['images'];
+        } else {
+             $images="no-img.png";
+        }
+        $description	=$val['description'];
+       $mystring = $val['date'];
+        $findme   = '-';
+        $pos = strpos($mystring, $findme);
+        if ($pos === false) {
+             $date=gmdate("d-m-Y", $val['date'] + 7*3600);
+        } else {
+            $date	=$val['date'];
+        }
+         
+        if(strlen($description)>300)
+        {       $new_gioihan=strpos($description," ",300);
+                $new_chuoi = substr($description,0,$new_gioihan)."...";
+        }
+        else {  $new_chuoi= $description;
+        }
+         $price=$val['price'];
+        $giaban=number_format($price, 0 , '.', '.');
+        
+        if($giaban<>0){$gia=$giaban." VNĐ";}
+	else{$gia="Giá: liên hệ";}
+        
+        $price_root=$val['price_root'];
+        $price_root=number_format($price_root, 0 , '.', '.');
+        $url=  khongdau($title);
+        $link="$base/trang/$url-$id-$menu.html";
+        
+     ?>
+    <div class="item"><div class="product" align="left">           
+        
+        
+        <div class="he-wrap tpl4">
+            <div class="img_pro"><a href="<?= $link ?>" class="more a5" data-animate="fadeInRight"  title="<?= $title ?>">
+                    <img src="<?= $base ?>/Upload/<?= $images ?>"  alt="<?= $title ?>" border="0" style="float:left;"></a></div>
+            
+	</div>
+        
+        
+ <div class="txt_pro" align="left">
+	   		<div class="sp"><a href="<?= $link ?>" title="<?= $title ?>" > <?= $title ?> </a></div>
+                        <div class="code price_root"><a href="<?= $link ?>" title="<?= $title ?>" > <?= $price_root ?> VNĐ</a></div>
+	   		<div class="code"><a href="<?= $link ?>" title="<?= $title ?>" > <?= $gia ?></a></div>
+	   
+	   
+</div>
+        
+        	</div></div>
+        
+        <script>
+            $(document).ready(function() {
+     
+    var owl = $("#owl-demo_<?=$stt?>");
+     
+    owl.owlCarousel({
+    items : 4
+   
+    });
+     
+    // Custom Navigation Events
+    $(".next_<?=$stt?>").click(function(){
+    owl.trigger('owl.next');
+    })
+    $(".prev_<?=$stt?>").click(function(){
+    owl.trigger('owl.prev');
+    })
+    $(".play_<?=$stt?>").click(function(){
+    owl.trigger('owl.play',1000); //owl.play event accept autoPlay speed as second parameter
+    })
+    $(".stop_<?=$stt?>").click(function(){
+    owl.trigger('owl.stop');
+    })
+     
+    });
+
+        </script>
+    <?php }?>
+    </div>
+     
+    <div class="customNavigation">
+         <header>
+        <a class="btn prev_<?=$stt?> button prev" href="javascript:void(0)">Prev</a>
+    <a class="btn next_<?=$stt?> button next blue" href="javascript:void(0)">Next</a>
+   
+    
+</header>
+    </div>
+   
+<div class="clear"></div>
+
+</div>
+
+<?php $stt++; } ?>
+
+<div class="clear_10"></div>
+
+<div class="title1">
+    <div  style="padding-top:10px; padding-left: 20px">Blog làm đẹp</div>
+    
+
+</div>
+
+<div class="sanpham" align="left">
+
+
+    
+     
+    <?php
+  
+        foreach ($page->list_Page_2(42,"0,4") as $valll)
+            {
+            
+             
+                $id=$valll["id"];
+                $description=$valll["description"];
+                 if(strlen($description)>360)
+                {
+
+                       $new_gioihan=strpos($description," ",360);
+                       $new_chuoi = substr($description,0,$new_gioihan)."...";
+
+                }
+                else
+                {
+
+                       $new_chuoi= $description;
+                }
+               
+                $title=$valll["title"];
+                $url=  khongdau($title);
+               
+                $view=new Zend_View();
+                $base=$view->baseUrl();
+                $img="$base/Upload/".$valll["images"];
+                $images="<img src='$img' title='$title' alt='$title' >";
+                $menu=$valll["menu"];
+                $link="$base/trang/$url-$id-$menu.html";
+                
+                echo"<div class='tintuc1'>
+    <div class='hinhgt'><a href='$link' title='$title'>$images</a></div>
+	 
+	
+	<div class='new_tt'>
+        <b><a href='$link' style='color:#000' title='$title'> $title</a></b> 
+        <br>  <font color='black'>  $new_chuoi </font>
+	 
+	
+	</div>
+        <div style='clear:both'></div>
+        <div class='details' align='right'>
+	<a href='$link' title='$title'>  Chi tiết >>> </a></div>
+	</div>";
+      
+	echo "<div class='clear'></div>";
+      
+    
+    } 
+    ?>
+       
+     
+</div>
+
+
+

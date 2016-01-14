@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/views/scripts/cart/cart.phtml</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/views/scripts/page/detailpage.phtml</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/models/Page.php</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/layouts/scripts/default/layout.phtml</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/controllers/PageController.php</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/models/System.php</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/controllers/IndexController.php</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/views/scripts/index/side.phtml</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/models/Cart.php</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/template/images/MyStyles.css</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/configs/application.ini</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/controllers/CartController.php</file>
+            <file>file:/E:/Xampp/htdocs/anh_vinh/kemsakura/application/modules/default/views/scripts/cart/order.phtml</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="<?= $this->baseUrl() ?>/css/bootstrap-cerulean_1.css" />   
+
+<script type="text/javascript" src="<?php echo $this->baseurl();  ?>/js/AJAX_3.js"></script>
+<div class="title1">
+   <div  style="padding-top:10px; padding-left: 20px">Liên hệ</div>
+ 
+</div>
+  
+<div class="sanpham">
+    
+	<div class="row-fluid sortable">
+<div class="">
+    <div class="box-content">
+        <?php 
+        foreach ($this->book as $val)
+        {            echo $val['content']; 
+        ?>
+        <p>&nbsp;</p>
+<form action="" method="post" enctype="multipart/form-data" name="tt_mh" id="tt_mh"  class="form-horizontal">
+    
+     <div class="control-group">
+                  <label class="control-label" for="typeahead">Tên đầy đủ </label>
+                  <div class="controls">
+                    <input name="fullname" type="text" class="span6 typeahead" id="full_name"  placeholder="Nhập tên của bạn" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+                    <div class="warning" id="full_nameError">Vui lòng nhập tên của bạn</div>
+                 </div>
+    </div>
+    
+     
+    
+    <div class="control-group">
+                  <label class="control-label" for="typeahead">Email </label>
+                  <div class="controls">
+                      <input name="email" type="text" class="span6 typeahead" id="email"  data-provide="typeahead" placeholder="Email của bạn">
+                    <div class="warning" id="emailError">Vui lòng nhập đúng định dạng email của bạn</div>
+               
+                  </div>
+    </div>
+    
+    <div class="control-group">
+                  <label class="control-label" for="typeahead">Số ĐT </label>
+                  <div class="controls">
+                      <input name="phone" type="text" class="span6 typeahead" id="phone"  data-provide="typeahead"  placeholder="Số điện thoại của bạn">
+                    <div class="warning" id="phoneError">Vui lòng nhập đúng định dạng của bạn</div>
+                    <input type="hidden" name="emaillh" value="<?= $val['email']; ?>">
+               
+                  </div>
+    </div>
+    
+    
+    
+    
+    
+    
+     
+    <div class="control-group">
+                  <label class="control-label" for="typeahead">Địa chỉ </label>
+                  <div class="controls">
+                      <input name="address" type="text" class="span6 typeahead" id="address" placeholder="Nhập địa chỉ của bạn" >
+                     <div class="warning" id="addressError">Vui lòng nhập địa chỉ của bạn</div>
+               
+                  </div>
+    </div>
+    
+     <div class="control-group">
+                  <label class="control-label" for="typeahead">Nội dung</label>
+                  <div class="controls">
+                   
+                      <textarea name="content" cols="70" rows="10" class="span6 typeahead" id="content" placeholder="Nhập nội dung cần liên hệ (*)" ></textarea>
+                    <div class="warning" id="contentError">Vui lòng nhập nội dung liên hệ</div>
+                  </div>
+    </div>  
+     
+    <div class="control-group">
+                  <label class="control-label" for="typeahead">Captcha </label>
+                  <div class="controls">
+                      <label><?php echo $this->captcha; ?></label>
+                    
+                    
+                      <input name="captcha" type="text" class="span6 typeahead" id="captcha"  placeholder="Nhập ký tự ở trên" >
+                    <?php echo $this->formHidden('captcha_id',$this->captchaID)?>
+                <div class="warning" id="captchaError">Vui lòng nhập captcha</div>
+                  </div>
+    </div>
+    
+       
+     
+        
+        <div class="form-actions">
+                  <button type="submit" class="btn btn-primary" id="SendMail">Gửi liên hệ</button>
+                  <button type="reset" class="btn">Nhập lại</button>
+          </div>
+      
+    </form>
+        <?php }?>
+    </div></div></div>
+    </div><!-- End #contact -->
+	

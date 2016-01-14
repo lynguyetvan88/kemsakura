@@ -1,0 +1,406 @@
+
+
+<?php
+foreach ($this->books as $val) {
+
+    $title_1 = $val['title'];
+    ?>
+
+    <div class="title1">
+        <div  style="padding-top:10px; padding-left: 20px"><?php echo $title_1; ?></div>
+
+
+    </div>
+    <div class="sanpham" align="left" style="margin-top: 0px">
+
+
+
+        <?php
+        foreach ($this->booksss as $valll) {
+            $id = $valll["id"];
+            $description = $valll["description"];
+
+
+            $title = $valll["title"];
+            $url = khongdau($title);
+
+            $view = new Zend_View();
+            $base = $view->baseUrl();
+            $images = "$base/Upload/" . $valll["images"];
+            $images = "<img class=\"img-responsive\" style='max-width:100%' src='$images' title='$title' alt='$title' >";
+            $menu = $valll["menu"];
+            $content = $valll["content"];
+            $link = "$base/trang/$url-$id-$menu.html";
+            ?>
+            <div class="row">
+                <div class="col-md-5 col-lg-5">
+                    <a href="<?= $link ?>" class="thumbnail" title="<?= $title ?>"> <?= $images ?> </a>   
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <p> <a href="<?= $link ?>"  title="<?= $title ?>"> <strong><?= $title ?></strong></a></p>
+                    <p style="font-weight: bold; color: red; font-size: 1.3em">Giá bán : <?= number_format($valll['price'], 0, '.', '.'); ?> VND</p>
+                    <p><strong><?= $description ?></strong></p>
+                    <p><a class="buynow shopping" href="/dtdd/sony-xperia-m4-aqua/dat-hang">Mua ngay<span>Giao tận nơi hoặc nhận ở cửa hàng</span></a></p>
+                 <input type="hidden" id="hd_id" value="<?= $valll['id'] ?>"/>
+                </div>
+            </div>
+            <?php
+            echo "<div style='clear:both'></div>";
+            echo $content;
+        }
+        ?>
+        <div style="clear:both; height:10px; border-bottom: 1px solid #ccc"></div>
+        <p class="text-center"><a class="buynow" style="width: 100%" href="/dtdd/sony-xperia-m4-aqua/dat-hang">Mua ngay<span>Giao tận nơi hoặc nhận ở cửa hàng</span></a></p>
+    <?php } ?>
+
+
+
+
+
+
+    <div style="clear:both; height:10px; border-bottom: 1px solid #ccc"></div>
+    <div class="comment">
+
+        <div class="rightDetailHA">MỜI CÁC BẠN BÌNH LUẬN HOẶC ĐẶT CÂU HỎI VỀ <br>     
+            <font color="#ed1c24">
+            Bộ <?php echo $title_1; ?> Sakura        </font></div>
+        <br/>
+        <div  class="list_comment_main">
+            <form action='' method='post' enctype='multipart/form-data' name='tt_mh' id='tt_mh' class="form-horizontal"  >
+                <div class="comMentproduct">
+                    <div class="clear10px"> </div>
+                    <div class="col-lg-4">
+                        <textarea class="form-control" required="" placeholder="Nội dung" id="noi_dung_com" name="noi_dung_com"></textarea>
+                    </div>
+                    <div class="col-lg-4">
+                        <input required="" class="form-control inputComment" type="text"  style="height: 22px" placeholder="Họ Tên" name="ho_ten" id="ho_ten" >
+                        <input required="" class="form-control inputComment" type="text"  style="height: 22px; margin-top: 7px" placeholder="Email"  id="email_com" >
+                        <input type="hidden" id="page_id" value="<?= $id ?>"/>
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="button" style="margin-top: 19px" class="form-control btn btn-primary" onclick="comentNulluser();" value="Bình luận" class="btBinhLuan">
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </form>
+            <br/>
+            <div class="list_comment">
+
+                <?php
+                if (!empty($this->comment)) {
+                    foreach ($this->comment as $val) {
+                        ?>
+                        <div style="clear:both; height:10px;"></div>
+                        <div class="clear clearas">
+                            <div class="commentIMg">
+                                <img alt="<?= $val['full_name'] ?>" src="<?= $this->baseUrl() ?>/template/comment/images/none_user.jpg">
+                            </div>
+                            <div class="commentDetail">
+                                <div class="commentDetailTop">
+                                    <div class="commentDetailTopLeft">
+                                        <?= $val['full_name'] ?>                </div>
+                                    <div class="commentDetailTopRight"> &nbsp;&nbsp; Vào lúc
+                                        <?= date("H:i d/m/Y", $val['date_create']) ?>             </div>
+                                    <div class="clear"> </div>
+                                </div>
+                                <div class="commentDetailBootom">
+                                    <?= $val['comment'] ?>            <div class="clearTraloiF">
+                                        <div class="clearTraloiFion"><span style="cursor: pointer" data-toggle="modal" onclick="comentTraLoi(<?= $val['comment_id'] ?>)"  data-target="#exampleModal" class="quantrivien">Trả Lời</span></div>
+                                    </div>
+                                </div>
+
+                                <?php
+                                if (isset($val['child']) && !empty($val['child'])) {
+                                    foreach ($val['child'] as $list) {
+                                        ?>
+                                        <div class="commentTraloi">
+                                            <div class="commentIMg">
+                                                <?php if (!empty($list['user_name'])) { ?>
+                                                    <img  src="<?= $this->baseUrl() ?>/template/comment/images/user_h.png">
+                                                <?php } else { ?>
+                                                    <img  src="<?= $this->baseUrl() ?>/template/comment/images/none_user.jpg">
+                                                <?php } ?>
+                                            </div>
+                                            <div class="imagrTraloiE">
+                                                <div class="commentDetailTop">
+                                                    <div class="commentDetailTopLeft commentDetailTopLeftT">
+                                                        <?= $list['full_name'] ?>                <?php if (!empty($list['user_name'])) { ?>
+                                                            <span class="quantrivien">Quản trị viên</span>   
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="clear"> </div>
+                                                </div>
+                                                <div class="commentDetailBootom">
+                                                    <?= $list['comment'] ?>    
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div style="clear:both; height:10px;"></div>
+                        <?php
+                    }
+                }
+                ?>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div style="clear:both; height:10px; border-bottom: 1px solid #ccc"></div>
+
+    <div class="titl">
+        <div  style="padding-top:10px; padding-left: 20px"><h1 style="font-size: 12px; text-transform: uppercase"><?php echo $title_1; ?> khác</h1></div>
+
+    </div>
+
+    <div class="sp2" style="width: 900px;" align="left">
+
+        <?php
+        foreach ($this->bookk as $valll) {
+
+            $id = $valll['id'];
+            $menu = $valll['menu'];
+            $title = $valll['title'];
+            $images = $valll['images'];
+            $mask = APPLICATION_PATH . "/../Upload/$images";
+            if (file_exists($mask)) {
+                $images = $valll['images'];
+            } else {
+                $images = "no-img.png";
+            }
+            $description = $valll['description'];
+            $mystring = $valll['date'];
+            $findme = '-';
+            $pos = strpos($mystring, $findme);
+            if ($pos === false) {
+                $date = gmdate("d-m-Y", $valll['date'] + 7 * 3600);
+            } else {
+                $date = $valll['date'];
+            }
+
+            if (strlen($description) > 300) {
+                $new_gioihan = strpos($description, " ", 300);
+                $new_chuoi = substr($description, 0, $new_gioihan) . "...";
+            } else {
+                $new_chuoi = $description;
+            }
+            $price = $valll['price'];
+            $giaban = number_format($price, 0, '.', '.');
+
+            if ($giaban <> 0) {
+                $gia = $giaban . " VNĐ";
+            } else {
+                $gia = "Giá: liên hệ";
+            }
+
+            $price_root = $valll['price_root'];
+            $price_root = number_format($price_root, 0, '.', '.');
+            $url = khongdau($title);
+            $link = "$base/trang/$url-$id-$menu.html";
+            ?>
+
+
+
+
+            <div class="product" align="left">           
+
+
+                <div class="he-wrap tpl4">
+                    <div class="img_pro"><a href="<?= $link ?>" class="more a5" data-animate="fadeInRight"  title="<?= $title ?>"><img src="<?= $base ?>/Upload/<?= $images ?>"  alt="<?= $title ?>" border="0" style="float:left;"></a></div>
+
+                </div>
+
+
+                <div class="txt_pro" align="left">
+
+                    <?php if ($menu <> 42) { ?>
+                        <div class="sp"><a href="<?= $link ?>" title="<?= $title ?>" > <?= $title ?> </a></div>
+                        <div class="code price_root"><a href="<?= $link ?>" title="<?= $title ?>" > <?= $price_root ?> VNĐ</a></div>
+                        <div class="code"><a href="<?= $link ?>" title="<?= $title ?>" > <?= $gia ?></a></div>
+                    <?php } ?>
+
+
+                </div>
+
+            </div>
+            <?php
+        }
+        ?>
+
+    </div>
+
+</div>
+
+
+<div class="clear_10"></div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Trả lời </h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label"> Họ và tên:</label>
+                        <input type="text" class="form-control" style="width: 95%" id="as_full_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label"> Email:</label>
+                        <input type="text" class="form-control" style="width: 95%" id="as_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Message:</label>
+                        <textarea class="form-control" style="width: 95%" id="as_comment"></textarea>
+                        <input type="hidden" class="form-control" style="width: 95%" id="as_comment_id">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="as_binhluan">Bình luận</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function comentNulluser() {
+
+        var content = $("#noi_dung_com").val();
+        var page_id = $("#page_id").val();
+        var full_name = $("#ho_ten").val();
+        var email = $("#email_com").val();
+        var email_regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+        var link =   "<?= "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>";
+        if (full_name == "") {
+            alert("Vui lòng nhập họ  tên");
+            $("#ho_ten").focus();
+            return false;
+        }
+        if (content == "") {
+            alert("Vui lòng nhập nội dung");
+            $("#noi_dung_com").focus();
+            return false;
+        }
+        if (email == "") {
+            alert("Vui lòng nhập email");
+            $("#email_com").focus();
+            return false;
+        }
+        if (!email_regex.test(email)) {
+            alert("Vui lòng nhập đúng định dạng email");
+            $("#email_com").focus();
+            return false;
+        }
+
+        $.ajax({
+            url: "<?php echo $this->baseUrl() ?>/default/page/comment",
+            method: "POST",
+            data: {content: content, full_name: full_name, email: email, id: page_id, link:link},
+            success: function (msg) {
+                if (msg == 1) {
+                    alert("Cảm ơn bạn đã bình luận sản phẩm");
+                    var strVar = "";
+
+                    strVar += "<div class=\"clear clearas list_comment\">";
+                    strVar += "                    <div class=\"commentIMg\">";
+                    strVar += "                        <img src=\"http:\/\/hoaanhdao.vn\/templates\/front\/images\/none_user.jpg\" >";
+                    strVar += "                    <\/div>";
+                    strVar += "                    <div class=\"commentDetail\">";
+                    strVar += "                        <div class=\"commentDetailTop\">";
+                    strVar += "                            <div class=\"commentDetailTopLeft\">";
+                    strVar += "                                " + full_name + "<\/div>";
+                    strVar += "                            <div class=\"commentDetailTopRight\"> &nbsp;&nbsp; Vừa xong";
+                    strVar += "                                            <\/div>";
+                    strVar += "                            <div class=\"clear\"> <\/div>";
+                    strVar += "                        <\/div>";
+                    strVar += "                        <div class=\"commentDetailBootom\">";
+                    strVar += "                             " + content + "               <div class=\"clearTraloiF\">";
+                    strVar += "                                ";
+                    strVar += "                            <\/div>";
+                    strVar += "                        <\/div>";
+                    strVar += "                    <\/div>";
+                    strVar += "                <\/div>";
+                    strVar += "<div style=\"clear:both; height:10px;\"></div>";
+                    $("#noi_dung_com").val("");
+
+                    $("#ho_ten").val("");
+                    $("#email_com").val("");
+                    $(".list_comment .clearas").before(strVar);
+                    strVar = "";
+                }
+            }
+        });
+
+    }
+    function comentTraLoi(id) {
+        $("#as_comment_id").val(id);
+    }
+    $("#as_binhluan").click(function () {
+        var as_comment_id = ($("#as_comment_id").val());
+        var content = $("#as_comment").val();
+        var page_id = $("#page_id").val();
+        var full_name = $("#as_full_name").val();
+        var email = $("#as_email").val();
+        var email_regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+        var link =   "<?= "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>";
+        if (full_name == "") {
+            alert("Vui lòng nhập họ  tên");
+            $("#as_full_name").focus();
+            return false;
+        }
+        if (content == "") {
+            alert("Vui lòng nhập nội dung");
+            $("#as_comment").focus();
+            return false;
+        }
+        if (email == "") {
+            alert("Vui lòng nhập email");
+            $("#as_email").focus();
+            return false;
+        }
+        if (!email_regex.test(email)) {
+            alert("Vui lòng nhập đúng định dạng email");
+            $("#as_email").focus();
+            return false;
+        }
+        $.ajax({
+            url: "<?php echo $this->baseUrl() ?>/default/page/comment",
+            method: "POST",
+            data: {content: content, full_name: full_name, email: email, id: page_id, comment_id: as_comment_id, link:link},
+            success: function (msg) {
+                if (msg == 1) {
+                    alert("Cảm ơn bạn đã bình luận phản hồi sản phẩm");
+                    $('#exampleModal').modal('hide');
+                    var url = document.URL;
+                    $('html').load(url);
+                }
+            }
+        });
+    })
+     $(".shopping").click(function () { 
+        var sl = 1;
+        var id = $("#hd_id").val();
+      
+        var res = ("<?php echo $this->baseUrl() ?>" + "/cart/" + id + "/" + sl);
+        
+        $.ajax(res)
+                .done(function () {
+                    window.location.assign("<?php echo $this->baseUrl() ?>" + "/shoppingcart");
+                })
+
+        return false;
+    });
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

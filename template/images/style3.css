@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+/*------CSS Document-------*/
+/* Copyright and Developer notice not to be removed */
+/* Copyright 2011 Joomlage.com  All rights reserved. */
+/* Designed and developed by Joomlage.com */
+/* Single user - Commercial Licence (For use on one domain only personal or commercial) */
+
+
+/*------------------------------------------------------START BODY STYLING--------------------------------------------------*/
+body{background-image:url(../images/style3/bodybackground.jpg);}
+/*-------------------------------------------------------END BODY STYLING----------------------------------------------------*/
+
+/*-----------------------------SIDE COLUMN MODULE HEAD STYLING----------------------------*/
+#side_column .moduletable h3, #side_column .moduletable_text h3{background-image:url(../images/style3/side-modulehead.png);}
+#side_column .moduletable_menu h3{background-image:url(../images/style3/side-modulehead.png);}
+/*---------------------------END SIDE COLUMN MODULE HEAD STYLING--------------------------*/
+
+
+/*-------------Bottom modules Heading background color, readmore color, button color */
+#user6 h3, #user7 h3, #user8 h3, .readon, a.readon, a:hover.readon, .button, .readmore a:link, .readmore a:visited, .readmore a:hover{background-color:#0b4772;}
+
+
+
+
+

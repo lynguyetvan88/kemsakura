@@ -1,0 +1,211 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+         <?php echo $this->meta();	?>
+       <?php 
+       
+            //echo $this->headTitle();
+            echo $this->headScript();
+            echo $this->doctype();
+            //echo $this->;
+            // echo $this->serverUrl();
+            // echo $this->url(array('view'=>'change'));
+    ?>
+       <?= $this->headLink(); ?>
+        <meta charset="utf-8">
+        <meta name="ROBOTS" content="noodp, INDEX, FOLLOW">
+        <meta name="revisit-after" content="1 days">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="DC.title" content="White Doctors - Kem trắng da, dưỡng thể hàng đầu Việt Nam" />
+        <meta name="geo.region" content="VN" />
+        <meta name="geo.placename" content="Hồ Chí Minh" />
+        <meta name="geo.position" content="10.823099;106.629664" />
+        <meta name="ICBM" content="10.823099, 106.629664" />
+       
+		<meta name="google-site-verification" content="_zwmKgLADHs4jSZd8YQI4xUjmEzJK7Xba4t4dQkqyTU" />
+         <link rel="SHORTCUT ICON" href="<?= $this->baseUrl() ?>/template/images/DHM.ico" type="image/x-icon" />
+         
+         <link href="<?= $this->baseUrl() ?>/template/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?= $this->baseUrl() ?>/template/images/MyStyles.css" />
+    
+ <link rel="stylesheet" type="text/css" href="<?= $this->baseUrl() ?>/template/css/component.css" />
+ 
+
+ 
+ 
+<script type="text/javascript" src="<?= $this->baseUrl() ?>/template/js/modernizr.custom.js"></script>
+<script src="<?= $this->baseUrl()?>/template/js/jquery-1.7.2.min.js"></script>
+
+    </head>
+    <body>
+        
+        <div class="tnbh"><?= $this->render('index/tuvan_banhang.phtml') ?></div>
+
+ 
+<!-- AddThis Smart Layers BEGIN -->
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5283ab031174f9c3"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'dark',
+    'share' : {
+    'position' : 'left',
+    'numPreferredServices' : 6
+    }   
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+<?= $this->render('index/ad_top.phtml') ?>
+<div class="clearfix"></div>
+<div class="hotline">
+    <div class="heed"><?= $this->render('index/hotline.phtml') ?></div>
+</div>
+
+
+        <div id="page">
+            <header>
+                
+                <div id="banner">
+<?php 
+            
+          echo  $this->render('index/side.phtml') ;
+            ?>
+               
+             </div>
+            </header>
+            
+            
+            <div class="">
+               
+                <?php   //$this->render('index/menu.phtml') ?>
+                 <?php echo $this->menu();	?>
+			
+            </div>
+            
+            
+        
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>-->
+ 
+            <div id="noidung">
+   
+<div id="sticker_" class="sidebar"  >
+    <?php
+    // echo $this->render('index/menu.phtml') ;
+        echo $this->menuleft();
+        echo $this->render('index/facebook.phtml') ;
+    ?>
+
+</div>
+
+
+
+               
+
+                
+                <div class="center" id="content___">
+
+            
+ 
+            
+    <?php echo $this->layout()->content; ?>
+      
+</div>
+   
+                
+
+
+<div style="clear:both; "></div>
+</div>
+
+
+            <div class="clear_10"></div>
+
+</div>
+
+<footer>
+    <?= $this->render('index/footer_1.phtml') ?>
+</footer>
+<!-- SlidesJS Required: Link to jQuery -->
+
+  <!-- End SlidesJS Required -->
+
+  <!-- SlidesJS Required: Link to jquery.slides.js -->
+  <script src="<?= $this->baseUrl()?>/template/js/jquery.slides.min.js"></script>
+  <!-- End SlidesJS Required -->
+ 
+  <!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+  <script>
+    $(function() {
+      $('#slides').slidesjs({
+        width: 980,
+        height: 200,
+       
+		
+		  play: {
+     //active: true,
+        // [boolean] Generate the play and stop buttons.
+        // You cannot use your own buttons. Sorry.
+      effect: "fade",
+        // [string] Can be either "slide" or "fade".
+      interval: 5000,
+        // [number] Time spent on each slide in milliseconds.
+      auto: true,
+        // [boolean] Start playing the slideshow on load.
+      swap: false,
+        // [boolean] show/hide stop and play buttons
+      pauseOnHover: false,
+        // [boolean] pause a playing slideshow on hover
+      restartDelay: 5000
+        // [number] restart delay on inactive slideshow
+    }
+		
+		
+      });
+    });
+    
+    
+    $( ".tab_1" ).click(function() {
+        var rel = $( this ).attr( "rel" );
+         var id = $( this ).attr( "id" );
+        
+        $(".ac_"+id).css("background","none");
+         $(this).css("background","none");
+        // $(this).css("background","#fff");
+        
+        
+        $("."+id).css("display","none");
+        $(".show_"+rel).show(2000);
+       
+});
+
+ $( "#search" ).click(function() {
+        var key = $("#key").val();
+       //  var id = $( this ).attr( "id" );
+       if(key==""){ alert("Bạn chưa nhập từ khóa"); return false;}
+       else{$( ".center" ).load( "<?= $this->baseUrl() ?>/default/page/search/key/"+key ); 
+       $("html, body").animate({ scrollTop: $('.center').offset().top }, 1000);
+   }
+         //alert(key);
+        return false;
+});
+  </script>
+  <!-- End SlidesJS Required -->
+  
+  
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-66672204-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  
+    </body>
+    
+</html>
